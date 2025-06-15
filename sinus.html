@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wykres Sinus i Cosinus</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        #chart {
+            max-width: 1800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="chart"></div>
+
+    <script>
+        const sinData = [];
+        const cosData = [];
+      
+
+        for (let x = 0; x <= 4260; x += 10) {
+            const radians = x * (Math.PI / 180);
+            sinData.push(Math.sin(radians));
+            cosData.push(Math.cos(radians));
+          
+        }
+
+        const options = {
+            chart: {
+                type: 'line',
+                height: 350
+            },
+            series: [
+                {
+                    name: 'sin(x)',
+                    data: sinData
+                },
+                {
+                    name: 'cos(x)',
+                    data: cosData
+                }
+            ],
+            
+
+        };
+
+        const chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+
+</body>
+</html>
